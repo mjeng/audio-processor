@@ -8,7 +8,6 @@ from scipy.fftpack import fft # import discrete fourier transform and its invers
 from scipy import signal
 from scipy.io.wavfile import write
 import struct
-import csv
 
 def process_file(audio_file):
     folder = 'Round 2/brp'
