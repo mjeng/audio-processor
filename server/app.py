@@ -3,8 +3,6 @@ import emily_script
 
 app = Flask(__name__)
 
-
-
 @app.route("/process_audio", methods=['POST'])
 def homepage():
     print(request)
