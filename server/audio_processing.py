@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import numpy as np
 import csv
 import matplotlib.pyplot as plt # naming convention for matplotlib
