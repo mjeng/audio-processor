@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, send_file
-# import emily_script
+import audio_processing
 
 app = Flask(__name__)
 
@@ -13,8 +13,9 @@ def process_audio():
     # if request.method == 'POST' and 'file' in request.files:
     if request.method == "POST":
         # audio_file = request.files['audio_file']
-        # emily_script.process_file(audio_file)
-        return "Hello"
+        audio_file = None
+        figure_name = audio_processing.process_file(audio_file)
+        return send_file(figure_name)
     else:
         print("??")
 
