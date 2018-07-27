@@ -149,7 +149,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     func getAudioFileUrl() -> URL{
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docsDirect = paths[0]
-        let audioUrl = docsDirect.appendingPathComponent("recording.wav")
+        let audioUrl = docsDirect.appendingPathComponent("recording.m4a")
         return audioUrl
     }
     
@@ -175,7 +175,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     @IBAction func postButton(_ sender: Any) {
         
         if recordingExists {
-            guard let url = URL(string: "https://emilys-server.herokuapp.com/audio_processing") else { return }
+            guard let url = URL(string: "https://emilys-server.herokuapp.com/process_audio") else { return }
             var request = URLRequest(url: url)
             request.setValue("audio/x-wav", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"

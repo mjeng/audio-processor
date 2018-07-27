@@ -33,28 +33,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuW-Eg-e7F">
-                                <rect key="frame" x="156" y="537" width="62" height="30"/>
+                                <rect key="frame" x="156.5" y="537" width="62" height="30"/>
                                 <state key="normal" title="playback"/>
                                 <connections>
                                     <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkq-JE-gWc"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-UT-V0E">
-                                <rect key="frame" x="67" y="126" width="240" height="318"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="517"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9ke-O3-ZRZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C92-fA-ZyQ" secondAttribute="bottom" constant="50" id="AR2-Vh-KFG"/>
-                            <constraint firstItem="N7P-UT-V0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="Agh-nl-D8F"/>
-                            <constraint firstItem="MuW-Eg-e7F" firstAttribute="top" secondItem="N7P-UT-V0E" secondAttribute="bottom" constant="93" id="CX7-86-Qq2"/>
-                            <constraint firstItem="N7P-UT-V0E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OIM-1h-3hV"/>
+                            <constraint firstItem="MuW-Eg-e7F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JR1-UT-399"/>
+                            <constraint firstItem="MuW-Eg-e7F" firstAttribute="top" secondItem="N7P-UT-V0E" secondAttribute="bottom" id="L6T-wO-LEM"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Oca-Br-9ba"/>
                             <constraint firstItem="C92-fA-ZyQ" firstAttribute="baseline" secondItem="ONN-S9-8sY" secondAttribute="baseline" id="T5a-vN-kBe"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VuS-Nk-hRP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MuW-Eg-e7F" secondAttribute="bottom" constant="100" id="aLa-za-O7C"/>
-                            <constraint firstItem="N7P-UT-V0E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="cK0-xW-pfu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ONN-S9-8sY" secondAttribute="trailing" constant="92" id="k5x-wH-ITa"/>
                             <constraint firstItem="C92-fA-ZyQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="l4b-Km-X20"/>
-                            <constraint firstItem="N7P-UT-V0E" firstAttribute="centerX" secondItem="MuW-Eg-e7F" secondAttribute="centerX" id="sdb-Uf-Xy3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
