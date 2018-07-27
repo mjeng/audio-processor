@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Audio Processor
@@ -23,6 +24,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onRecordClick(_ sender: Any) {
+        
+        guard let url = URL(string: "http://localhost:5000/") else { return }
+        
+        let session = URLSession.shared
+        session.dataTask(with: url) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
+            
+            if let data = data {
+                print(data)
+            }
+            
+            
+        }.resume()
+        
+        
         
     }
     
