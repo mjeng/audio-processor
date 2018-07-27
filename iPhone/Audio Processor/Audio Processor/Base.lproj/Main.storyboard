@@ -19,26 +19,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C92-fA-ZyQ">
-                                <rect key="frame" x="165" y="587" width="45" height="30"/>
+                                <rect key="frame" x="85" y="587" width="45" height="30"/>
                                 <state key="normal" title="record"/>
                                 <connections>
-                                    <action selector="onRecordClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rBQ-84-dBY"/>
+                                    <action selector="record:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aec-60-QC6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONN-S9-8sY">
+                                <rect key="frame" x="252" y="587" width="31" height="30"/>
+                                <state key="normal" title="post"/>
+                                <connections>
+                                    <action selector="postButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="48h-QJ-Q9N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuW-Eg-e7F">
+                                <rect key="frame" x="156" y="537" width="62" height="30"/>
+                                <state key="normal" title="playback"/>
+                                <connections>
+                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkq-JE-gWc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-UT-V0E">
+                                <rect key="frame" x="67" y="126" width="240" height="318"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C92-fA-ZyQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hwv-De-OJS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C92-fA-ZyQ" secondAttribute="bottom" constant="50" id="Wsj-UC-aiw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C92-fA-ZyQ" secondAttribute="bottom" constant="50" id="AR2-Vh-KFG"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="Agh-nl-D8F"/>
+                            <constraint firstItem="MuW-Eg-e7F" firstAttribute="top" secondItem="N7P-UT-V0E" secondAttribute="bottom" constant="93" id="CX7-86-Qq2"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OIM-1h-3hV"/>
+                            <constraint firstItem="C92-fA-ZyQ" firstAttribute="baseline" secondItem="ONN-S9-8sY" secondAttribute="baseline" id="T5a-vN-kBe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MuW-Eg-e7F" secondAttribute="bottom" constant="100" id="aLa-za-O7C"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="cK0-xW-pfu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ONN-S9-8sY" secondAttribute="trailing" constant="92" id="k5x-wH-ITa"/>
+                            <constraint firstItem="C92-fA-ZyQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="l4b-Km-X20"/>
+                            <constraint firstItem="N7P-UT-V0E" firstAttribute="centerX" secondItem="MuW-Eg-e7F" secondAttribute="centerX" id="sdb-Uf-Xy3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="N7P-UT-V0E" id="6XT-Kv-dL9"/>
+                        <outlet property="playButton" destination="MuW-Eg-e7F" id="uFV-8F-aT0"/>
                         <outlet property="recordButton" destination="C92-fA-ZyQ" id="qF5-44-aKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
 </document>
