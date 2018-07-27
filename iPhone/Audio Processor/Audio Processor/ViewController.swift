@@ -17,6 +17,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     var isRecording = false
     var audioRecorder: AVAudioRecorder?
     var player : AVAudioPlayer?
+    var recordingExists = false
     
 //    var recordingSession: AVAudioSession!
 //    var audioRecorder: AVAudioRecorder!
@@ -141,13 +142,14 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
     func finishRecording() {
         audioRecorder?.stop()
         isRecording = false
+        recordingExists = true
     }
     
     // Path for saving/retreiving the audio file
     func getAudioFileUrl() -> URL{
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docsDirect = paths[0]
-        let audioUrl = docsDirect.appendingPathComponent("recording.m4a")
+        let audioUrl = docsDirect.appendingPathComponent("recording.wav")
         return audioUrl
     }
     
@@ -172,23 +174,24 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
 
     @IBAction func postButton(_ sender: Any) {
         
-        guard let url = URL(string: "https://emilys-server.herokuapp.com/test_page") else { return }
-        var request = URLRequest(url: url)
-        request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print(error)
-                return
+        if recordingExists {
+            guard let url = URL(string: "https://emilys-server.herokuapp.com/audio_processing") else { return }
+            var request = URLRequest(url: url)
+            request.setValue("audio/x-wav", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    print(error)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.imageView.contentMode = .scaleAspectFit
+                    self.imageView.image = UIImage(data: data)
+                }
+                
             }
-            DispatchQueue.main.async {
-                self.imageView.contentMode = .scaleAspectFit
-                self.imageView.image = UIImage(data: data)
-            }
-            
+            task.resume()
         }
-        task.resume()
-        
         
         
     }
