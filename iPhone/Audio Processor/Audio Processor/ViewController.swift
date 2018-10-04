@@ -12,8 +12,19 @@ import AVFoundation
 
 class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
+    // how long each recording should be
+    let recordingSeconds = 5.0
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var postButton: UIButton!
+    
+    // the scan button should perform recording, playback, and post
+    @IBOutlet weak var scanButton: UIButton!
+    
+    
     var isRecording = false
     var audioRecorder: AVAudioRecorder?
     var player : AVAudioPlayer?
@@ -39,10 +50,22 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
                 
             }
         }
-        
         print(getAudioFileUrl())
-        
     }
+    
+    @IBAction func debugButtonPressed(_ sender: UIButton) {
+        toggleDebug()
+    }
+    
+    func toggleDebug() {
+        for i in stride(from: 0, through: 2, by: 1) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.buttonStackView.arrangedSubviews[i].isHidden = !self.buttonStackView.arrangedSubviews[i].isHidden
+                
+            })
+        }
+    }
+
 
     func setUpUI() {
         print("I ain't needa do nothin")
@@ -76,7 +99,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
 //        }.resume()
 //    }
 
-    @IBAction func record(_ sender: UIButton) {
+    @IBAction func recordButtonWasPressed(_ sender: UIButton) {
         if isRecording {
             finishRecording()
         } else {
@@ -170,10 +193,12 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
         }
         recordButton.isEnabled = true
     }
-    
 
     @IBAction func postButton(_ sender: Any) {
-        
+        postToHeroku()
+    }
+    
+    func postToHeroku() {
         if recordingExists {
             guard let url = URL(string: "https://emilys-server.herokuapp.com/process_audio") else { return }
             var request = URLRequest(url: url)
@@ -181,19 +206,29 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
             request.httpMethod = "POST"
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 DispatchQueue.main.async {
                     self.imageView.contentMode = .scaleAspectFit
                     self.imageView.image = UIImage(data: data)
+                    self.titleLabel.text = "Scan complete"
                 }
-                
             }
             task.resume()
         }
-        
-        
+    }
+    
+    
+    @IBAction func scanButtonPressed(_ sender: UIButton) {
+        titleLabel.text = "Scan in progress"
+        startRecording()
+        DispatchQueue.main.asyncAfter(deadline: .now() + recordingSeconds) {
+            self.finishRecording()
+            self.titleLabel.text = "Processing scan"
+            self.postToHeroku()
+            
+        }
     }
 }
 
